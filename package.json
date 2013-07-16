@@ -1,0 +1,21 @@
+{
+  "name": "component-mock",
+  "description": "Component mock.",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "grunt": "*",
+    "component": "*"
+  },
+  "devDependencies": {
+    "expect.js": "*",
+    "sinon": "*",
+    "karma": "canary", 
+    "karma-mocha": "*",
+    "grunt-karma": "git://github.com/karma-runner/grunt-karma.git",
+    "grunt-component-build": "*"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/component install --dev"
+  }
+}

@@ -22,7 +22,10 @@ var originalMockMap = {};
  */
 
 function registerMock(moduleName, mock) {
-  originalMockMap[moduleName] = globalRequire.modules[moduleName];
+  if (!originalMockMap[moduleName]) {
+    // store module only first time to keep original module.
+    originalMockMap[moduleName] = globalRequire.modules[moduleName];
+  }
   globalRequire.register(moduleName, function(exports, require, module) {
     module.exports = mock;
   });
