@@ -16,9 +16,10 @@ if (!globalRequire) throw new Error("globl require is not exist.");
 var originalMockMap = {};
 
 /**
- * register mock
+ * Register mock.
  * @param {String} moduleName
  * @param {Object} mock
+ * @api public
  */
 
 function registerMock(moduleName, mock) {
@@ -32,8 +33,9 @@ function registerMock(moduleName, mock) {
 }
 
 /**
- * deregister mock
+ * Deregister mock.
  * @param {String} moduleName
+ * @api public
  */
 
 function deregisterMock(moduleName) {
