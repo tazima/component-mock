@@ -8,6 +8,11 @@ exports = module.exports = {
   deregisterMock: deregisterMock
 };
 
+// get global require
+var globalRequire = window.require;
+
+if (!globalRequire) throw new Error("globl require is not exist.");
+
 var originalMockMap = {};
 
 /**
@@ -17,8 +22,8 @@ var originalMockMap = {};
  */
 
 function registerMock(moduleName, mock) {
-  originalMockMap[moduleName] = require.modules[moduleName];
-  require.register(moduleName, function(exports, require, module) {
+  originalMockMap[moduleName] = globalRequire.modules[moduleName];
+  globalRequire.register(moduleName, function(exports, require, module) {
     module.exports = mock;
   });
 }
@@ -29,5 +34,5 @@ function registerMock(moduleName, mock) {
  */
 
 function deregisterMock(moduleName) {
-  require.register(moduleName, originalMockMap[moduleName]);
+  globalRequire.register(moduleName, originalMockMap[moduleName]);
 }
